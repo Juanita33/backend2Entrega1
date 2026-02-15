@@ -55,8 +55,11 @@ export const initializePassport = () => {
       }
     })
   );
-
+  
   // JWT (CURRENT)
+  if (!config.jwtSecret) {
+    throw new Error("JWT_SECRET is missing. Check your .env and env.js config export.");
+  }
   passport.use(
     "jwt",
     new JwtStrategy(

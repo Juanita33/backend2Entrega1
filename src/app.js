@@ -16,9 +16,12 @@ export const createApp = () => {
   initializePassport();
   app.use(passport.initialize());
 
+  app.get("/ping", (req, res) => res.send("pong"));
+
   app.use("/api", apiRouter);
 
   app.use(errorHandler);
+  
 
   return app;
 };
